@@ -1,6 +1,7 @@
 import 'package:animated_emoji/animated_emoji.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'drawer_altrd.g.dart';
@@ -22,20 +23,26 @@ class AltrdDrawer extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     int state = ref.watch(stateProvider);
     return Drawer(
+      backgroundColor: Colors.white,
+      surfaceTintColor: Colors.transparent,
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          DrawerHeader(
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 175, 222, 176),
-              ),
-              child: Center(
-                child: AnimatedEmoji(
-                  AnimatedEmojis.leaves,
-                  repeat: true,
-                  size: 180,
-                ),
+          SizedBox(
+            height: 30,
+          ),
+          Ink(
+              height: 150,
+              width: 150,
+              child: SvgPicture.asset(
+                "assets/Altrd Cannabis Asset.svg",
+                fit: BoxFit.contain,
+                // Adjust SVG color for better visibility against white background
+                color: Colors.black,
               )),
+          SizedBox(
+            height: 50,
+          ),
           ListTile(
             title: Row(
               children: [
